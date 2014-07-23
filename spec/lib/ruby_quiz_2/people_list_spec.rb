@@ -10,7 +10,7 @@ module RubyQuiz2
         described_class.new list
       end
       it "has the right number of people" do
-        expect(subject.length).to eq 7
+        expect(subject.length).to eq list.split("\n").size
       end
     end
 
