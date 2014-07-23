@@ -7,5 +7,10 @@ module RubyQuiz2
       true
     end
 
+    def valid_set?(selections)
+      return false unless selections.collect(&:giftee).uniq.size == selections.size
+      true
+    end
+
   end
 end

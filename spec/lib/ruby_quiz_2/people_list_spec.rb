@@ -2,7 +2,7 @@ module RubyQuiz2
   describe PeopleList do
 
     let :list do
-      File.read(File.expand_path("../../../fixtures/list.txt", __FILE__))
+      File.read(File.expand_path("../../../fixtures/people_lists/feasible.txt", __FILE__))
     end
 
     context "when initialized with the list" do
