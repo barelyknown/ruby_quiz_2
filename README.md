@@ -11,7 +11,7 @@ gem install 'ruby_quiz_2'
 ```
 
 `feasible.txt`
-```txt
+```
 Luke Skywalker <luke@theforce.net>
 Leia Skywalker <leia@therebellion.org>
 Toula Portokalos <toula@manhunter.org>
