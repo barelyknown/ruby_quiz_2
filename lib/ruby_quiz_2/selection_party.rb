@@ -33,7 +33,7 @@ module RubyQuiz2
       @valid_selections_by_santa ||= begin
         Hash.new { |h,k| h[k] = [] }.tap do |h|
           people_list.each do |santa|
-            people_list.people.each do |giftee|
+            people_list.each do |giftee|
               if selection_rules.valid?(santa, giftee)
                 h[santa] << Selection.new(santa, giftee)
               end
