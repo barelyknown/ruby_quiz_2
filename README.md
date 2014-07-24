@@ -10,7 +10,7 @@ The original quiz requested that the santas be emailed, but I just made a list.
 gem install 'ruby_quiz_2'
 ```
 
-`feasible.txt`
+`friends.txt`
 ```
 Luke Skywalker <luke@theforce.net>
 Leia Skywalker <leia@therebellion.org>
@@ -22,7 +22,7 @@ Lindsey Brigman <lindsey@iseealiens.net>
 ```
 
 ```bash
-barelyknown$ ruby_quiz_2 secret_santas feasible.txt
+barelyknown$ ruby_quiz_2 secret_santas friends.txt
 
 SECRET SANTA SELECTIONS
 
