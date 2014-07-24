@@ -1,0 +1,15 @@
+require "thor"
+
+require "ruby_quiz_2"
+
+module RubyQuiz2
+  class SecretSantaCLI < Thor
+
+    desc "select_secret_santas PATH", "select secret santas for a list of friends"
+    def select_secret_santas(path)
+
+    end
+
+  end
+  SecretSantaCLI.start(ARGV)
+end
