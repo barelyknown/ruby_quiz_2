@@ -16,36 +16,41 @@ module RubyQuiz2
     end
 
     def make_selections
-
-      # build an array of valid giftees for each santa
-      valid_selections_by_santa = Hash.new { |h,k| h[k] = [] }
-      people_list.each do |santa|
-        people_list.people.shuffle.each do |giftee|
-          if selection_rules.valid?(santa, giftee)
-            valid_selections_by_santa[santa] << Selection.new(santa, giftee)
-          end
-        end
-      end
-
-      raise ArgumentError, "some people have no potential" unless valid_selections_by_santa.length == people_list.length
-
-      possible_selections = valid_selections_by_santa.shift[1].product(*valid_selections_by_santa.values)
-
       while selections.empty? && possible_selections.any?
         candidate_selections = possible_selections.shift
-        candidate_selections.each do |c|
-        end
         if selection_rules.valid_set?(candidate_selections)
           self.selections.replace(candidate_selections)
         end
       end
-
-      raise ArgumentError, "no feasible sets" unless selections.any?
-
-      puts "Santa\tGiftee"
-      selections.each do |selection|
-        puts "#{selection.santa.name}\t#{selection.giftee.name}"
+      unless selections.any?
+        raise ArgumentError, "there are no valid combinations of selections"
       end
     end
+
+  private
+
+    def valid_selections_by_santa
+      @valid_selections_by_santa ||= begin
+        Hash.new { |h,k| h[k] = [] }.tap do |h|
+          people_list.each do |santa|
+            people_list.people.shuffle.each do |giftee|
+              if selection_rules.valid?(santa, giftee)
+                h[santa] << Selection.new(santa, giftee)
+              end
+            end
+          end
+          unless h.length == people_list.length
+            raise ArgumentError, "the rules give some people no options"
+          end
+        end
+      end
+    end
+
+    def possible_selections
+      @possible_selections ||= begin
+        valid_selections_by_santa.shift[1].product(*valid_selections_by_santa.values)
+      end
+    end
+
   end
 end
