@@ -5,9 +5,12 @@ require "ruby_quiz_2"
 module RubyQuiz2
   class SecretSantaCLI < Thor
 
-    desc "select_secret_santas PATH", "select secret santas for a list of friends"
-    def select_secret_santas(path)
-
+    desc "secret_santas PATH", "select secret santas"
+    def secret_santas(path)
+      people_list = PeopleList.new(File.read(path))
+      selection_party = SelectionParty.new(people_list)
+      selection_party.make_selections
+      SelectionsPrinter.new.print(selection_party.selections)
     end
 
   end

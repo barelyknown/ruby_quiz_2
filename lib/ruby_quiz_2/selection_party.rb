@@ -26,7 +26,7 @@ module RubyQuiz2
         raise ArgumentError, "there are no valid combinations of selections"
       end
     end
-
+    
   private
 
     def valid_selections_by_santa
