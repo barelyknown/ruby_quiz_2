@@ -26,14 +26,14 @@ module RubyQuiz2
         raise ArgumentError, "there are no valid combinations of selections"
       end
     end
-    
+
   private
 
     def valid_selections_by_santa
       @valid_selections_by_santa ||= begin
         Hash.new { |h,k| h[k] = [] }.tap do |h|
           people_list.each do |santa|
-            people_list.people.shuffle.each do |giftee|
+            people_list.people.each do |giftee|
               if selection_rules.valid?(santa, giftee)
                 h[santa] << Selection.new(santa, giftee)
               end
@@ -48,7 +48,7 @@ module RubyQuiz2
 
     def possible_selections
       @possible_selections ||= begin
-        valid_selections_by_santa.shift[1].product(*valid_selections_by_santa.values)
+        valid_selections_by_santa.shift[1].product(*valid_selections_by_santa.values).shuffle
       end
     end
 
