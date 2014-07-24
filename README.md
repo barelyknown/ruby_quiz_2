@@ -1,29 +1,38 @@
-# RubyQuiz2
+# Ruby Quiz #2 Solution
 
-TODO: Write a gem description
+A solution to the [second Ruby quiz](http://rubyquiz.com/quiz2.html).
 
-## Installation
+This command line utility selects secret santas for a list of people.
 
-Add this line to your application's Gemfile:
+The original quiz requested that the santas be emailed, but I just made a list.
 
-    gem 'ruby_quiz_2'
+```bash
+gem install 'ruby_quiz_2'
+```
 
-And then execute:
+`feasible.txt`
+```txt
+Luke Skywalker <luke@theforce.net>
+Leia Skywalker <leia@therebellion.org>
+Toula Portokalos <toula@manhunter.org>
+Gus Portokalos <gus@weareallfruit.net>
+Bruce Wayne <bruce@imbatman.com>
+Virgil Brigman <virgil@rigworkersunion.org>
+Lindsey Brigman <lindsey@iseealiens.net>
+```
 
-    $ bundle
+```bash
+barelyknown$ ruby_quiz_2 secret_santas feasible.txt
 
-Or install it yourself as:
+SECRET SANTA SELECTIONS
 
-    $ gem install ruby_quiz_2
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it ( http://github.com/<my-github-username>/ruby_quiz_2/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Santa                     Giftee
+------------------------- -------------------------
+Luke Skywalker            Lindsey Brigman
+Leia Skywalker            Gus Portokalos
+Toula Portokalos          Bruce Wayne
+Gus Portokalos            Leia Skywalker
+Bruce Wayne               Virgil Brigman
+Virgil Brigman            Toula Portokalos
+Lindsey Brigman           Luke Skywalker
+```
